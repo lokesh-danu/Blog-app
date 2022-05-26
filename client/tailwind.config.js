@@ -1,7 +1,13 @@
 module.exports = {
-  content: ["*"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        lora: "'Lora', serif",
+        hand: "'Satisfy', cursive",
+        roboto:"'Roboto', sans-serif"
+      }
+    },
   },
   plugins: [],
 }

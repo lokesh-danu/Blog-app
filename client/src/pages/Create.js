@@ -32,7 +32,8 @@ const Create = () => {
     }
     return ( 
         <>
-        <form >
+        <h3 className='text-center' >Write blog Here !</h3>
+        <form className='mt-8 items-stretch m-4' >
             <input type="text"
             placeholder='title'
             value={title}
@@ -48,7 +49,8 @@ const Create = () => {
             value={user}
             onChange={e=>{setUser(e.target.value)}}
             />
-            <button onClick={post} >Post Blog</button>
+            <button className='m-auto' 
+            onClick={post} >Post Blog</button>
         </form>
         </>
      );

@@ -29,7 +29,7 @@ const Login = () => {
     return (
         <>
             <div className="">
-                i am register
+                <h3 className='text-center' >Login</h3>
                 <form >
                     <input type="text"
                         value={email}

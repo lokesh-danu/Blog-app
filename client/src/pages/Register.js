@@ -25,24 +25,28 @@ const Register = () => {
     }
     return (
         <>
-            <div className="">
-                i am register
-                <form >
-                    <input type="text"
+            <div className="my-8">
+                <h3 className='text-center my-6'>Register</h3>
+                <form className=''>
+                    <input type="text" 
+                        className=''
                         value={name}
                         placeholder='user-name'
                         onChange={e => { setName(e.target.value) }} />
                     <input type="text"
+                        className=''
                         value={email}
                         onChange={e => { setEmail(e.target.value) }}
                         placeholder='email'
                     />
                     <input type="text"
+                        className=''
                         value={password}
                         placeholder='password'
                         onChange={e => { setPassword(e.target.value) }}
                     />
-                    <button onClick={register}>Register</button>
+                    <button  
+                    onClick={register}>Register</button>
                     {error && <div className="">{error}</div> }
                 </form>
             </div>

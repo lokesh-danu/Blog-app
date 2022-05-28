@@ -1,16 +1,18 @@
 import logo from '../img/logo.png';
+import background from '../img/quill.jpg'
 const Header = () => {
     return (
         <>
-            <div className="h-screen bg-contain bg-no-repeat bg-left bg-[#fffccf70] flex" >
-                <img src={logo} alt="" className='h-screen' />
-                <div className="w-2/5 flex flex-col h-screen justify-center p-6">
+            <div className="h-screen bg-no-repeat bg-cover" 
+            style={{backgroundImage:`url(${background})`}} >
+                {/* <img src={logo} alt="" className='h-1/3 lg:h-3/4 p-4 lg:p-10' /> */}
+                <div className="flex flex-col h-screen px-6 justify-center lg:w-2/5  lg:justify-center lg:p-6">
 
-                    <h2 className='font-lora text-8xl my-6'>React blog</h2>
+                    <h2 className='text-yellow-200 text-center mb-4 lg:my-6'>React blog</h2>
                     
-                    <p className='font-hand text-4xl p-2 leading-snug'> You can buy attention (advertising). You can beg for attention from the media (PR). You can bug people one at a time to get attention (sales). Or you can earn attention by creating something interesting and valuable and then publishing it online for free</p>
+                    <p className='font-hand text-white text-xl lg:text-4xl leading-snug'>You can buy attention . You can beg for attention from the media . You can bug people one at a time to get attention . Or you can earn attention by creating something interesting and valuable and then publishing it online for free </p>
                     
-                    <h4 className='font-roboto text-2xl' >-David Meerman Scott</h4>
+                    <h6 className='text-right text-lime-500' >-David Meerman Scott</h6>
 
                 </div>
             </div>
@@ -19,3 +21,7 @@ const Header = () => {
 }
 
 export default Header;
+
+// You can buy attention . You can beg for attention from the media . You can bug people one at a time to get attention . Or you can earn attention by creating something interesting and valuable and then publishing it online for free
+
+//bg-[#fffccf70]

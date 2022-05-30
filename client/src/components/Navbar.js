@@ -1,9 +1,31 @@
 import logo from '../img/logo2.svg';
-import React, { useState } from 'react';
-import { BsFacebook, BsTwitter,BsInstagram,BsPinterest} from 'react-icons/bs'
+import React, { useState, useEffect, useContext } from 'react';
+import { BsFacebook, BsTwitter, BsInstagram, BsPinterest, BsPerson, BsVectorPen } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
+import { isExpired, decodeToken } from "react-jwt";
+import { FiLogOut, FiSettings } from 'react-icons/fi'
 const Navbar = () => {
     const [menu, setMenu] = useState(false);
+    const [userMenu, setUserMenu] = useState(false)
+    const [user, setUser] = useContext(UserContext);
+    useEffect(() => {
+        const token = localStorage.getItem("auth-token");
+        if (token) {
+            const myToken = decodeToken(token);
+            console.log(myToken);
+            const newUser = {
+                "name": myToken.name,
+                "id": myToken.id
+            }
+            setUser(newUser);
+        }
+
+    }, [])
+    const logout = () => {
+        setUser(null);
+        localStorage.removeItem("auth-token");
+    }
     return (
         <>
             <nav className="py-2 px-3  items-center justify-between fixed w-screen top-0 opacity-90 bg-black flex md:px-6 lg:px-10 lg:py-5   lg:h-20 ">
@@ -36,20 +58,50 @@ const Navbar = () => {
                         <li className="btnOval text-neutral-300 hover:text-black hover:bg-slate-50 " >Write</li>
                     </Link>
                 </ul>
-                <div className="flex space-x-6">
-                    <Link to='/register'>
-                        <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Register</div>
-                    </Link>
-                    <Link to='/login'>
-                        <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Login</div>
-                    </Link>
-                </div>
+                {
+                    user ?
+                        <div className="text-white flex items-center space-x-1 relative"
+                            onClick={e => {
+                                setUserMenu(!userMenu);
+                            }}
+                        >
+                            <BsPerson className='text-2xl' />
+                            <span>{user.name}</span>
+                            <div className={`flex flex-col rounded-md space-y-2 absolute top-full h-fit  right-0  bg-blue-500 px-5 pt-4 pb-8 text-white text-xl truncate 
+                            ${userMenu ? '' : 'scale-y-0'}  duration-500 ease-in-out origin-top
+                            `}>
+                                <button className='btnOval hover:text-red-500' >
+                                    <FiSettings />
+                                    <span>Settings</span>
+                                </button>
+                                <button className='btnOval hover:text-red-500' >
+                                     <BsVectorPen /> 
+                                    <span>New Blog</span>
+                                     </button>
+                                <button className='btnOval hover:text-red-500'
+                                    onClick={logout} > 
+                                     <FiLogOut /> 
+                                    <span>Logout</span>
+                                     </button>
+                            </div>
+
+                        </div>
+                        : <div className="flex space-x-6">
+                            <Link to='/register'>
+                                <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Register</div>
+                            </Link>
+                            <Link to='/login'>
+                                <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Login</div>
+                            </Link>
+                        </div>
+
+                }
+
             </nav>
-            {/* {
-            true && 
-            
-        } */}
-            <div className={`fixed top-0 py-4 md:hidden  bg-black w-[60vw] h-full ease-in-out duration-500 ${menu ? 'translate-x-0' : 'translate-x-[-25rem] '} `}>
+
+            {/* side menu pop mobile */}
+            <div className={`fixed top-0 py-4 md:hidden  bg-black w-[60vw] h-full ease-in-out duration-500 
+            ${menu ? 'translate-x-0' : 'translate-x-[-25rem] '} `}>
                 <button className='absolute right-4 text-white text-3xl md:hidden '
                     onClick={e => {
                         setMenu(!menu);
@@ -57,7 +109,7 @@ const Navbar = () => {
                     <i className="fa-solid fa-x"></i>
 
                 </button>
-                
+
                 <ul className="flex flex-col items-center mt-14 space-y-4 text-xl font-roboto" >
                     <Link to='/'>
                         <li className="btnOval  text-neutral-300 hover:text-black hover:bg-slate-50" >Home</li>
@@ -80,6 +132,7 @@ const Navbar = () => {
                     <BsPinterest></BsPinterest>
                 </div>
             </div>
+
         </>
     );
 }

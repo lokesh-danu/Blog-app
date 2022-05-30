@@ -33,7 +33,7 @@ font-family: 'Roboto', sans-serif; */
         @apply font-roboto text-sm md:text-lg lg:text-2xl border-2 w-fit px-3 md:py-1 rounded-md;
     }
     .btnOval{
-        @apply font-roboto lg:text-2xl border-2 border-hidden w-fit px-5 py-1 rounded-3xl ;
+        @apply flex items-center flex-nowrap space-x-2 font-roboto lg:text-2xl border-2 border-hidden w-fit px-5 py-1 rounded-3xl ;
     }
     form{
         @apply flex flex-col  items-center;

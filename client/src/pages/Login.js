@@ -1,14 +1,26 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
+import { isExpired, decodeToken } from "react-jwt";
+
 const Login = () => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [error, setError] = useState(null);
     const [token, setToken] = useState(null);
+    const [user,setUser]=useContext(UserContext);
     useEffect(() => {
       if(token){
         localStorage.setItem("auth-token", token);
+        const myToken = decodeToken(token);
+            console.log(myToken);
+            const newUser = {
+                "name": myToken.name,
+                "id": myToken.id
+            }
+            setUser(newUser);
       }
+      console.log(token);
     }, [token])
     
     async function login(e) {
@@ -29,7 +41,8 @@ const Login = () => {
     return (
         <>
             <div className="">
-                <h3 className='text-center' >Login</h3>
+                <h3 className='text-center
+                ' >Login</h3>
                 <form >
                     <input type="text"
                         value={email}

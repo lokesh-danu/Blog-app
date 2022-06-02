@@ -16,7 +16,8 @@ const Login = () => {
             console.log(myToken);
             const newUser = {
                 "name": myToken.name,
-                "id": myToken.id
+                "id": myToken.id,
+                "token":token
             }
             setUser(newUser);
       }

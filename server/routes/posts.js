@@ -5,8 +5,8 @@ const verify=require('../components/verify');
 router.post("/",verify, async (req, res) => {
     const newPost = new Post({
         title:req.body.title,
-        userName:req.body.user,
-        discription:req.body.disc
+        userName:req.body.userName,
+        discription:req.body.discription
     });
     console.log(newPost);
     try {

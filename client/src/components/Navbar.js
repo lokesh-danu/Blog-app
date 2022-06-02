@@ -16,7 +16,8 @@ const Navbar = () => {
             console.log(myToken);
             const newUser = {
                 "name": myToken.name,
-                "id": myToken.id
+                "id": myToken.id,
+                "token":token
             }
             setUser(newUser);
         }
@@ -28,7 +29,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="py-2 px-3  items-center justify-between fixed w-screen top-0 opacity-90 bg-black flex md:px-6 lg:px-10 lg:py-5   lg:h-20 ">
+            <nav className="py-2 px-3 h-[6vh] items-center justify-between sticky w-screen top-0 opacity-90 bg-black flex md:px-6 lg:px-10 lg:py-5   lg:h-20 ">
                 {/* <img src={logo} alt="logo" className="h-12 text-white" /> */}
                 <button className='text-white text-3xl md:hidden '
                     onClick={e => {
@@ -37,7 +38,7 @@ const Navbar = () => {
                     <i className="fa-solid fa-bars "></i>
                 </button>
 
-                <div className="hidden md:flex md:text-2xl lg:text-4xl mx-2 text-white space-x-2 ">
+                <div className="hidden md:flex md:text-2xl lg:text-3xl lg:space-x-3  mx-2 text-white space-x-2 ">
                     <BsFacebook></BsFacebook>
                     <BsTwitter></BsTwitter>
                     <BsInstagram></BsInstagram>
@@ -74,10 +75,12 @@ const Navbar = () => {
                                     <FiSettings />
                                     <span>Settings</span>
                                 </button>
+                                     <Link to="/create" >
                                 <button className='btnOval hover:text-red-500' >
                                      <BsVectorPen /> 
                                     <span>New Blog</span>
                                      </button>
+                                     </Link>
                                 <button className='btnOval hover:text-red-500'
                                     onClick={logout} > 
                                      <FiLogOut /> 
@@ -100,8 +103,9 @@ const Navbar = () => {
             </nav>
 
             {/* side menu pop mobile */}
-            <div className={`fixed top-0 py-4 md:hidden  bg-black w-[60vw] h-full ease-in-out duration-500 
-            ${menu ? 'translate-x-0' : 'translate-x-[-25rem] '} `}>
+            <div className={`fixed top-0 py-4 md:hidden  bg-black w-[60vw] h-full opacity-95 
+            ${menu ? 'translate-x-0' : 'translate-x-[-25rem] '} ease-in-out duration-500` }
+            >
                 <button className='absolute right-4 text-white text-3xl md:hidden '
                     onClick={e => {
                         setMenu(!menu);

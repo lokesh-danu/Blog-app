@@ -27,7 +27,7 @@ const Login = () => {
     async function login(e) {
         e.preventDefault();
         console.log('registering');
-        axios.post('http://0.0.0.0:5000/api/auth/login', {
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
             email,
             password
         }).then( res =>{
@@ -56,8 +56,8 @@ const Login = () => {
                         onChange={e => { setPassword(e.target.value) }}
                     />
                     <button onClick={login}>Login</button>
-                    {error && <div className="">{error}</div>}
-                    {token && <div className="">{token}</div>}
+                    {/* {error && <div className="">{error}</div>}
+                    {token && <div className="">{token}</div>} */}
                     
                 </form>
             </div>

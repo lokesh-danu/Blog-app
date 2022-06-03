@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from "react-router-dom";
 const Register = () => {
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [error, setError] = useState(null);
+    const navigate=useNavigate();
     async function register(e) {
         e.preventDefault();
         console.log('registering');
-        try {
-            const res = await axios.post('http://0.0.0.0:5000/api/auth/register', {
-                name,
-                email,
-                password
-            });
-            if(res.status===200){
-                window.location.replace('/login');
+        axios({
+            method:'post',
+            url:`${process.env.REACT_APP_SERVER_URL}/auth/register`,
+            data:{
+                "name":name,
+                "email":email,
+                "password":password
             }
-        } catch (error) {
-            console.log(error);
-            setError(error);
-        }
+        }).then(res=>{
+            navigate(-1);
+        }).catch(err=>{
+            console.log(err);
+        })
+        // try {
+        //     const res = await axios.post('http://0.0.0.0:5000/api/auth/register', {
+        //         name,
+        //         email,
+        //         password
+        //     });
+        //     if(res.status===200){
+        //         window.location.replace('/login');
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     setError(error);
+        // }
     }
     return (
         <>

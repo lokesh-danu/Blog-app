@@ -7,7 +7,7 @@ const Blog = () => {
     const { id } = useParams();
     console.log(id);
     useEffect(() => {
-        axios.get(`http://0.0.0.0:5000/api/posts/${id}`).then(
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/posts/${id}`).then(
             res => {
                 console.log(res.data);
                 setTitle(res.data.title);

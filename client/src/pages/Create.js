@@ -1,22 +1,19 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
-// import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 const Create = () => {
     const [title, setTitle] = useState("");
     const [disc, setDisc] = useState("");
     const [file, setFile] = useState(null);
     const [user, setUser] = useContext(UserContext);
+    const navigate =useNavigate();
     useEffect(() => {
-        const token = localStorage.getItem("auth-token");
-        // console.log(token);
-        if (!token) {
-            window.location.replace('/login');
+        if(!user){
+            navigate(`/register`);
+            // window.alert(`register or login before to continue`);
         }
-        else {
-            console.log(token);
-        }
-    }, [])
+    }, [user]);
 
     const post = async (e) => {
         e.preventDefault();
@@ -34,7 +31,7 @@ const Create = () => {
             newBlog.photo = filename;
             await axios({
                 method: 'post',
-                url: `http://0.0.0.0:5000/api/upload`,
+                url: `${process.env.REACT_APP_SERVER_URL}/upload`,
                 data: data
             }).then(res => {
                 console.log(res);
@@ -45,7 +42,7 @@ const Create = () => {
         }
         await axios({
             method: 'post',
-            url: `http://0.0.0.0:5000/api/posts`,
+            url: `${process.env.REACT_APP_SERVER_URL}/posts`,
             headers: {
                 "auth-token": user.token
             },

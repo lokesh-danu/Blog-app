@@ -8,7 +8,9 @@ const Home = () => {
     
     
     useEffect(() => {
-        axios.get('http://0.0.0.0:5000/api/posts/')
+        const url=`${process.env.REACT_APP_SERVER_URL}/posts/`;
+        console.log(url);
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/posts/`)
             .then(res => {
                 console.log(res.data);
                 setAllPost(res.data);

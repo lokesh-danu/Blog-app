@@ -29,7 +29,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="py-2 px-3 h-[6vh] items-center justify-between sticky w-screen top-0 opacity-90 bg-black flex md:px-6 lg:px-10 lg:py-5   lg:h-20 ">
+            <nav className="nav px-3  justify-between  bg-black/90  md:px-6 lg:px-10 ">
                 {/* <img src={logo} alt="logo" className="h-12 text-white" /> */}
                 <button className='text-white text-3xl md:hidden '
                     onClick={e => {
@@ -89,12 +89,12 @@ const Navbar = () => {
                             </div>
 
                         </div>
-                        : <div className="flex space-x-6">
+                        : <div className="flex space-x-6 text-white">
                             <Link to='/register'>
-                                <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Register</div>
+                                <div className="btnRectangle ring-blue-400 ring-offset-2 bg-blue-400  hover:ring-2 hover:scale-110 ease-in-out duration-150" >Register</div>
                             </Link>
                             <Link to='/login'>
-                                <div className="btnRectangle bg-white text-neutral-800 hover:text-black hover:scale-110 " >Login</div>
+                                <div className="btnRectangle ring-teal-400 bg-green-400 ring-offset-2 hover:ring-2 hover:scale-110 ease-in-out duration-150 " >Login</div>
                             </Link>
                         </div>
 

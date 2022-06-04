@@ -41,6 +41,8 @@ const Login = () => {
     };
     return (
         <>
+        <div className="cnt flex items-center justify-center pb-10">
+
             <div className="">
                 <h3 className='text-center
                 ' >Login</h3>
@@ -49,18 +51,19 @@ const Login = () => {
                         value={email}
                         onChange={e => { setEmail(e.target.value) }}
                         placeholder='email'
-                    />
+                        />
                     <input type="text"
                         value={password}
                         placeholder='password'
                         onChange={e => { setPassword(e.target.value) }}
-                    />
+                        />
                     <button onClick={login}>Login</button>
                     {/* {error && <div className="">{error}</div>}
                     {token && <div className="">{token}</div>} */}
                     
                 </form>
             </div>
+                    </div>
         </>
     );
 }

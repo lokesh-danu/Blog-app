@@ -23,24 +23,13 @@ const Register = () => {
         }).catch(err=>{
             console.log(err);
         })
-        // try {
-        //     const res = await axios.post('http://0.0.0.0:5000/api/auth/register', {
-        //         name,
-        //         email,
-        //         password
-        //     });
-        //     if(res.status===200){
-        //         window.location.replace('/login');
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        //     setError(error);
-        // }
     }
     return (
         <>
-            <div className="my-8">
-                <h3 className='text-center my-6'>Register</h3>
+            <div className="cnt flex items-center justify-center pb-10">
+                <div className="">
+
+                <h3 className='text-center mb-4'>Register</h3>
                 <form className=''>
                     <input type="text" 
                         className=''
@@ -59,10 +48,11 @@ const Register = () => {
                         placeholder='password'
                         onChange={e => { setPassword(e.target.value) }}
                     />
-                    <button  
-                    onClick={register}>Register</button>
-                    {error && <div className="">{error}</div> }
+                    <button className='bg-primaryBlue text-slate-200 hover:ring-2 ring-offset-2 hover:scale-110 ease-in-out duration-200'
+                    onClick={register}>Sign Up</button>
+                    {/* {error && <div className="">{error}</div> } */}
                 </form>
+                        </div>
             </div>
         </>
     );

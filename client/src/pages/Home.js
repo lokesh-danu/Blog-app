@@ -34,7 +34,7 @@ const Home = () => {
                             <div className="" key={el._id}>
                                 <h3 className='text-center' >{el.title}</h3>
                                 <p className='h-3/4 truncate' >{el.discription}</p>
-                                <h4 className='text-right truncate' >~by:{el.userName}</h4>
+                                <h5 className='text-right truncate' >~by:{el.userName}</h5>
 
                             </div>
                         </Link>

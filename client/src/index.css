@@ -24,27 +24,69 @@ font-family: 'Roboto', sans-serif; */
         @apply text-2xl md:text-3xl xl:text-5xl
     }
     h5{
-        @apply  md:text-xl xl:text-3xl
+        @apply text-xl md:text-2xl xl:text-4xl
     }
     h6{
-        @apply  md:text-lg xl:text-2xl
+        @apply text-lg md:text-2xl xl:text-3xl
     }
     p{
         @apply font-roboto text-lg lg:text-2xl
     }
     .btnRectangle{
-        @apply font-roboto text-sm md:text-lg lg:text-2xl border-2 w-fit px-3 md:py-1 rounded-md;
+        @apply flex items-center font-roboto text-xl md:text-xl lg:text-2xl w-fit px-3 py-1 lg:py-2 rounded-md;
     }
     .btnOval{
-        @apply flex items-center flex-nowrap space-x-2 font-roboto lg:text-2xl border-2 border-hidden w-fit px-5 py-1 rounded-3xl ;
+        @apply flex items-center flex-nowrap space-x-2 font-roboto lg:text-2xl w-fit px-5 py-1 rounded-3xl ;
     }
     form{
-        @apply flex flex-col  items-center;
+        @apply flex flex-col items-center;
     }
     form>*{
         @apply text-lg m-2 border-2 rounded-md px-4 py-2 md:text-xl lg:text-3xl;
     }
+    .nav{
+        @apply h-[6vh] lg:h-[8vh] flex items-center sticky w-screen top-0
+    }
     .cnt{
-        @apply h-[94vh] w-screen
+        @apply h-[94vh] w-screen lg:h-[92vh]
     }
 }
+
+/* CSS */
+
+/* .button-9 {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+} */

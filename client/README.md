@@ -63,7 +63,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+currently deployed at https://mern-blog-project.netlify.app/
+
+REACT_SERVER_URL: 'api' for redirect file to work
 
 ### `npm run build` fails to minify
 

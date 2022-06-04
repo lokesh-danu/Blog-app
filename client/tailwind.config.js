@@ -10,6 +10,9 @@ module.exports = {
         lora: "'Lora', serif",
         hand: "'Satisfy', cursive",
         roboto:"'Roboto', sans-serif"
+      },
+      colors:{
+        primaryBlue:"#405cf5"
       }
     },
   },

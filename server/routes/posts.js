@@ -6,7 +6,8 @@ router.post("/",verify, async (req, res) => {
     const newPost = new Post({
         title:req.body.title,
         userName:req.body.userName,
-        discription:req.body.discription
+        discription:req.body.discription,
+        pic:req.body.pic
     });
     console.log(newPost);
     try {
@@ -18,6 +19,7 @@ router.post("/",verify, async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+    
     try {
         const post = await Post.findById(req.params.id);
         res.status(200).json(post);
@@ -27,11 +29,23 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-    try {
-        const post = await Post.find();
-        res.status(200).json(post);
-    } catch (err) {
-        res.status(500).json(err);
+    const userName=req.query.userName;
+    if(userName){
+        try {
+            const post =await Post.find({"userName":userName});
+            res.status(200).send(post);     
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    else{
+
+        try {
+            const post = await Post.find();
+            res.status(200).json(post);
+        } catch (err) {
+            res.status(500).json(err);
+        }
     }
 });
 //DELETE
